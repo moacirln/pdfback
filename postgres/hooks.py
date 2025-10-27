@@ -15,6 +15,15 @@ def fetch_marks(id_model):
     finally:
         conn.close()
 
+def fetch_models():
+    conn = get_connection()
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SELECT * FROM modelos WHERE ativo=true ")
+            return cur.fetchall()
+    finally:
+        conn.close()
+
 def fetch_envios():
     envios = []
 
